@@ -49,7 +49,7 @@ fn PERMIT(z0) [error] -> [] {
     calldatacopy(0x3f, 0xa3, 0x41)
 
     // Recover signer.
-    suc = staticcall(gas(), 0x1, returndatasize(), 0x80, 0x01, 0x20)
+    suc = staticcall(gas(), 1, returndatasize(), 0x80, 0x01, 0x20)
     // If successful reads the signer, if recovery failed will load the hash (passing check would
     // require full collision between message_hash and the zero padded from address).
     signer = mload(suc)
