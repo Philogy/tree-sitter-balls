@@ -1,0 +1,67 @@
+dependency UNUSED
+dependency WOW
+
+const PERMIT_TYPEHASH
+const CACHED_DOMAIN_SEP
+
+extern _BLABLA(x, y, z) stack(3, 4)
+
+extern _LOAD_ADDRESS(offset) stack(0, 1)
+extern _REQUIRE_NOT() stack(1, 0) reads(CONTROL_FLOW)
+extern _NONCES_SLOT()  stack(1, 1)
+
+fn PERMIT(z0) [error] -> [] {
+    // Load calldata.
+    owner = _LOAD_ADDRESS<0x10>()
+    spender = _LOAD_ADDRESS<0x30>()
+    amount = calldataload(0x44)
+    deadline = calldataload(0x64)
+
+    // Load and increment nonce.
+    nonce_slot = _NONCES_SLOT(owner)
+    nonce = sload(nonce_slot)
+    sstore(nonce_slot, add(nonce, 1))
+
+    // Check deadline.
+    deadline_invalid = gt(timestamp(), deadline)
+
+    // Compute permit hash.
+    mstore(msize(), PERMIT_TYPEHASH)
+    mstore(msize(), owner)
+    mstore(msize(), spender)
+    mstore(msize(), amount)
+    mstore(msize(), nonce)
+    mstore(msize(), deadline)
+    permit_hash = sha3(returndatasize(), msize())
+
+    // Update allowance.
+    allowance_slot = sha3(0x20, 0x40)
+    sstore(allowance_slot, amount)
+
+    // Compute ERC712 hash (weird offset such that 0x21..0x40 is cleared for signature).
+    mstore(0x21, 0x1901)
+    mstore(0x41, CACHED_DOMAIN_SEP)
+    mstore(0x61, permit_hash)
+    message_hash = sha3(0x3f, 0x42)
+
+    // Prepare ecrecover payload
+    mstore(returndatasize(), message_hash)
+    calldatacopy(0x3f, 0xa3, 0x41)
+
+    // Recover signer.
+    suc = staticcall(gas(), 0x1, returndatasize(), 0x80, 0x01, 0x20)
+    // If successful reads the signer, if recovery failed will load the hash (passing check would
+    // require full collision between message_hash and the zero padded from address).
+    signer = mload(suc)
+
+    signature_invalid = sub(signer, owner)
+
+    _REQUIRE_NOT(
+        or(
+            or(signature_invalid, deadline_invalid),
+            error
+        )
+    )
+
+    stop()
+}

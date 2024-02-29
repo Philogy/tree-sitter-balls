@@ -1,0 +1,755 @@
+[
+  {
+    "type": "abstract_dependency",
+    "named": true,
+    "fields": {
+      "identifier": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "invocation",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extern_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "huff_macro_stack_in_out",
+          "named": true
+        },
+        {
+          "type": "ident_list",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "reads",
+          "named": true
+        },
+        {
+          "type": "writes",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_definition",
+    "named": true,
+    "fields": {
+      "identifier": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "function_body",
+          "named": true
+        },
+        {
+          "type": "ident_list",
+          "named": true
+        },
+        {
+          "type": "reads",
+          "named": true
+        },
+        {
+          "type": "stack_in_out",
+          "named": true
+        },
+        {
+          "type": "writes",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "huff_const",
+    "named": true,
+    "fields": {
+      "identifier": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "huff_macro_stack_in_out",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "decimal_number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ident_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "inlined_arg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "invocation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "inlined_arg",
+          "named": true
+        },
+        {
+          "type": "std_evm_op",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "number",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "decimal_number",
+          "named": true
+        },
+        {
+          "type": "hex_number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "reads",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ident_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "abstract_dependency",
+          "named": true
+        },
+        {
+          "type": "extern_macro",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "huff_const",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stack_arg_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stack_in_out",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "stack_arg_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "std_evm_op",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "writes",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ident_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "add",
+    "named": false
+  },
+  {
+    "type": "addmod",
+    "named": false
+  },
+  {
+    "type": "address",
+    "named": false
+  },
+  {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "balance",
+    "named": false
+  },
+  {
+    "type": "basefee",
+    "named": false
+  },
+  {
+    "type": "blockhash",
+    "named": false
+  },
+  {
+    "type": "byte",
+    "named": false
+  },
+  {
+    "type": "call",
+    "named": false
+  },
+  {
+    "type": "callcode",
+    "named": false
+  },
+  {
+    "type": "calldatacopy",
+    "named": false
+  },
+  {
+    "type": "calldataload",
+    "named": false
+  },
+  {
+    "type": "calldatasize",
+    "named": false
+  },
+  {
+    "type": "caller",
+    "named": false
+  },
+  {
+    "type": "callvalue",
+    "named": false
+  },
+  {
+    "type": "chainid",
+    "named": false
+  },
+  {
+    "type": "codecopy",
+    "named": false
+  },
+  {
+    "type": "codesize",
+    "named": false
+  },
+  {
+    "type": "coinbase",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "const",
+    "named": false
+  },
+  {
+    "type": "create",
+    "named": false
+  },
+  {
+    "type": "create2",
+    "named": false
+  },
+  {
+    "type": "decimal_number",
+    "named": true
+  },
+  {
+    "type": "delegatecall",
+    "named": false
+  },
+  {
+    "type": "dependency",
+    "named": false
+  },
+  {
+    "type": "diff",
+    "named": false
+  },
+  {
+    "type": "div",
+    "named": false
+  },
+  {
+    "type": "eq",
+    "named": false
+  },
+  {
+    "type": "exp",
+    "named": false
+  },
+  {
+    "type": "extcodecopy",
+    "named": false
+  },
+  {
+    "type": "extcodehash",
+    "named": false
+  },
+  {
+    "type": "extcodesize",
+    "named": false
+  },
+  {
+    "type": "extern",
+    "named": false
+  },
+  {
+    "type": "fn",
+    "named": false
+  },
+  {
+    "type": "gas",
+    "named": false
+  },
+  {
+    "type": "gaslimit",
+    "named": false
+  },
+  {
+    "type": "gasprice",
+    "named": false
+  },
+  {
+    "type": "gt",
+    "named": false
+  },
+  {
+    "type": "hex_number",
+    "named": true
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "invalid",
+    "named": false
+  },
+  {
+    "type": "iszero",
+    "named": false
+  },
+  {
+    "type": "jump",
+    "named": false
+  },
+  {
+    "type": "jumpi",
+    "named": false
+  },
+  {
+    "type": "log0",
+    "named": false
+  },
+  {
+    "type": "log1",
+    "named": false
+  },
+  {
+    "type": "log2",
+    "named": false
+  },
+  {
+    "type": "log3",
+    "named": false
+  },
+  {
+    "type": "log4",
+    "named": false
+  },
+  {
+    "type": "lt",
+    "named": false
+  },
+  {
+    "type": "mload",
+    "named": false
+  },
+  {
+    "type": "mod",
+    "named": false
+  },
+  {
+    "type": "msize",
+    "named": false
+  },
+  {
+    "type": "mstore",
+    "named": false
+  },
+  {
+    "type": "mstore8",
+    "named": false
+  },
+  {
+    "type": "mul",
+    "named": false
+  },
+  {
+    "type": "mulmod",
+    "named": false
+  },
+  {
+    "type": "not",
+    "named": false
+  },
+  {
+    "type": "number",
+    "named": false
+  },
+  {
+    "type": "or",
+    "named": false
+  },
+  {
+    "type": "origin",
+    "named": false
+  },
+  {
+    "type": "prevrandao",
+    "named": false
+  },
+  {
+    "type": "reads",
+    "named": false
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "returndatacopy",
+    "named": false
+  },
+  {
+    "type": "returndatasize",
+    "named": false
+  },
+  {
+    "type": "revert",
+    "named": false
+  },
+  {
+    "type": "sar",
+    "named": false
+  },
+  {
+    "type": "sdiv",
+    "named": false
+  },
+  {
+    "type": "selfbalance",
+    "named": false
+  },
+  {
+    "type": "selfdestruct",
+    "named": false
+  },
+  {
+    "type": "sgt",
+    "named": false
+  },
+  {
+    "type": "sha3",
+    "named": false
+  },
+  {
+    "type": "shl",
+    "named": false
+  },
+  {
+    "type": "shr",
+    "named": false
+  },
+  {
+    "type": "signextend",
+    "named": false
+  },
+  {
+    "type": "sload",
+    "named": false
+  },
+  {
+    "type": "slt",
+    "named": false
+  },
+  {
+    "type": "smod",
+    "named": false
+  },
+  {
+    "type": "sstore",
+    "named": false
+  },
+  {
+    "type": "stack",
+    "named": false
+  },
+  {
+    "type": "staticcall",
+    "named": false
+  },
+  {
+    "type": "stop",
+    "named": false
+  },
+  {
+    "type": "sub",
+    "named": false
+  },
+  {
+    "type": "timestamp",
+    "named": false
+  },
+  {
+    "type": "tload",
+    "named": false
+  },
+  {
+    "type": "tstore",
+    "named": false
+  },
+  {
+    "type": "writes",
+    "named": false
+  },
+  {
+    "type": "xor",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]
