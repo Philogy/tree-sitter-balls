@@ -112,11 +112,11 @@
           "named": true
         },
         {
-          "type": "reads",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "stack_in_out",
+          "type": "reads",
           "named": true
         },
         {
@@ -289,21 +289,6 @@
       "types": [
         {
           "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "stack_in_out",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "stack_arg_list",
           "named": true
         }
       ]

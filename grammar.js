@@ -61,10 +61,13 @@ module.exports = grammar({
       seq(
         'fn',
         field('identifier', $.identifier),
+        optional(
+          seq('<', repeat(seq($.identifier, ',')), optional($.identifier), '>')
+        ),
         $.ident_list,
+        optional(seq('->', $.ident_list)),
         optional($.reads),
         optional($.writes),
-        $.stack_in_out,
         $.function_body
       ),
 
